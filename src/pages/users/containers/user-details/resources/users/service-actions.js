@@ -1,10 +1,8 @@
 import _get from 'lodash/get'
+import api from 'api'
 
-import { createHttp } from 'util/rest'
 import { actionNames } from 'root/action-names'
 import { normalized } from 'util/helper.js'
-import { rootUrl } from 'root/config'
-
 
 const users = {
   getOne: (userId) => (dispatch, getState) => {
@@ -13,8 +11,7 @@ const users = {
     const userIdExist = existingIds.includes(userId)
 
     if (!userIdExist) {
-      return createHttp
-        .get(`${rootUrl}/users/${userId}`)
+      api.users.getOne(userId)
         .then( user => {
           dispatch( {
             type: actionNames.usersPage_userDetails_resources_users_updated,
