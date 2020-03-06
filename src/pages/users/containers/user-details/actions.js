@@ -1,17 +1,17 @@
-import { API } from 'app/resources/users/services'
+import { serviceActions } from './resources/users/service-actions'
 import { actionNames } from 'root/action-names'
 
 const actions = {
 
   init() {
-    return (dispatch, getState) => {
+    return (dispatch) => {
       dispatch({
         type: actionNames.usersPage_userDetails_init,
       })
     }
   },
 
-  fetchUser: (userId) => async (dispatch, getState) => {
+  fetchUser: (userId) => async (dispatch) => {
     dispatch({
       type: actionNames.usersPage_userDetails_fetch_begin
     })
@@ -19,7 +19,7 @@ const actions = {
     let user
 
     try {
-      user = await dispatch( API.users.getOne(userId) )
+      user = await dispatch( serviceActions.users.getOne(userId) )
       dispatch({
         type: actionNames.usersPage_userDetails_fetch_success,
         payload: {user}
