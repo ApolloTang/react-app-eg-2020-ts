@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {getIfUtils, removeEmpty} = require('webpack-config-utils');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
+
 
 
 
@@ -16,6 +19,7 @@ const absPathToFont = pathResolve(__dirname, 'src/common/fonts');
 
 
 const webpackConfig_fn = (env = {}) => {
+  console.log('env', env)
   const _mode = env.mode || 'production';
   const {ifProduction} = getIfUtils(_mode);
 
@@ -79,6 +83,16 @@ const webpackConfig_fn = (env = {}) => {
         title: title,
         favicon: './common/images/favicon.ico'
       }),
+      new webpack.EnvironmentPlugin({
+        ENABLE_REDUX_LOGGER: !!env.withReduxLogger,
+      }),
+      new Dotenv({
+        path: './.env',
+        safe: false, // set to true suppose to load .env.example, but does not work.
+        systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+        silent: true, // hide any errors
+        defaults: false // load '.env.defaults' as the default values if empty.
+      })
     ])
   };
 

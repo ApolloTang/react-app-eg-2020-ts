@@ -2,7 +2,7 @@ const DEBUG = (process && process.env && process.env.debug === 'true')
 const PROD = (process && process.env && process.env.prod === 'true')
 const TEST = (process && process.env && process.env.NODE_ENV === 'test')
 
-const withReduxLogger = true
+const withReduxLogger = process.env.ENABLE_REDUX_LOGGER
 const shouldPersistStoreState = false
 
 let api_urlAndPort
