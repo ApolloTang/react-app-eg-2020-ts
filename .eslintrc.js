@@ -25,7 +25,7 @@ module.exports = {
     "react-hooks",
   ],
   "rules": {
-    "semi": ["warn", "never"],
+    "semi": ["off"],
     "quotes": ["warn", "single"],
     "indent": ["off", 2],
     "no-unused-vars": "warn",
@@ -56,7 +56,7 @@ module.exports = {
       "rules": {
         "no-undef": "off", // https://github.com/eslint/typescript-eslint-parser/issues/437
 
-        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/explicit-function-return-type": "off", // without this you will get incosistence behaviour compare to barebone @typescript-eslint
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/member-delimiter-style": ["warn", {
