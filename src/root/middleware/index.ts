@@ -1,19 +1,16 @@
-import {/* TEST, PROD,*/ withReduxLogger} from 'root/config'
+import {/* TEST, PROD,*/ withReduxLogger} from 'root/config';
 
-import thunk from 'redux-thunk'
-import { createLogger } from 'redux-logger'
+import thunk from 'redux-thunk';
+import {createLogger} from 'redux-logger';
 
-const middleware = [
-  thunk
-]
+const middleware = [thunk];
 
-if ( withReduxLogger ) {
+if (withReduxLogger) {
   middleware.push(
     // @ts-ignore
-    createLogger()  // <---- createLogger give weird typscript errors
+    createLogger(), // <---- createLogger give weird typscript errors
     // https://github.com/LogRocket/redux-logger/issues/333
-  )
+  );
 }
 
-export { middleware }
-
+export {middleware};

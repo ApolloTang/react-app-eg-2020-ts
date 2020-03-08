@@ -1,37 +1,34 @@
-import { API } from 'app/resources/users-catelogue/services'
-import { actionNames } from 'root/action-names'
+import {API} from 'app/resources/users-catelogue/services';
+import {actionNames} from 'root/action-names';
 
 const userCatelog = {
-
   init() {
     return (dispatch, getState) => {
-      dispatch({ type: actionNames.usersPage_userCatelogue_init })
-    }
+      dispatch({type: actionNames.usersPage_userCatelogue_init});
+    };
   },
 
   fetchUserCatelog() {
-    return async (dispatch, getState) =>  {
+    return async (dispatch, getState) => {
       dispatch({
-        type: actionNames.usersPage_userCatelogue_fetch_begin
-      })
+        type: actionNames.usersPage_userCatelogue_fetch_begin,
+      });
 
       try {
-        const userCatelog = await API.usersCatelogue.getAll()
-        const ids_userCatelog = userCatelog.map( user=>user._id)
+        const userCatelog = await API.usersCatelogue.getAll();
+        const ids_userCatelog = userCatelog.map(user => user._id);
         dispatch({
           type: actionNames.usersPage_userCatelogue_fetch_success,
-          payload: { ids_userCatelog }
-        })
-      } catch(err) {
+          payload: {ids_userCatelog},
+        });
+      } catch (err) {
         dispatch({
           type: actionNames.usersPage_userCatelogue_fetch_fail,
-          error: err
-        })
+          error: err,
+        });
       }
-    }
-  }
-}
+    };
+  },
+};
 
-export default userCatelog
-
-
+export default userCatelog;

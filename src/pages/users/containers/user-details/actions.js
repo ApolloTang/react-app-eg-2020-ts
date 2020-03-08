@@ -1,40 +1,37 @@
-import { serviceActions } from './resources/users/service-actions'
-import { actionNames } from 'root/action-names'
+import {serviceActions} from './resources/users/service-actions';
+import {actionNames} from 'root/action-names';
 
 const actions = {
-
   init() {
-    return (dispatch) => {
+    return dispatch => {
       dispatch({
         type: actionNames.usersPage_userDetails_init,
-      })
-    }
+      });
+    };
   },
 
-  fetchUser: (userId) => async (dispatch) => {
+  fetchUser: userId => async dispatch => {
     dispatch({
-      type: actionNames.usersPage_userDetails_fetch_begin
-    })
+      type: actionNames.usersPage_userDetails_fetch_begin,
+    });
 
-    let user
+    let user;
 
     try {
-      user = await dispatch( serviceActions.users.getOne(userId) )
+      user = await dispatch(serviceActions.users.getOne(userId));
       dispatch({
         type: actionNames.usersPage_userDetails_fetch_success,
-        payload: {user}
-      })
+        payload: {user},
+      });
     } catch (error) {
       dispatch({
         type: actionNames.usersPage_userDetails_fetch_fail,
-        payload: error
-      })
+        payload: error,
+      });
     }
 
-    return user
-  }
-}
+    return user;
+  },
+};
 
-export  { actions as actions_userDetails }
-
-
+export {actions as actions_userDetails};

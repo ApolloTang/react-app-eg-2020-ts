@@ -1,13 +1,12 @@
-import { rootUrl } from 'root/config'
-import { createHttp } from 'util/rest'
+import {rootUrl} from 'root/config';
+import {createHttp} from 'util/rest';
 
-const getOne = (userId) => {
-  return createHttp
-    .get(`${rootUrl}/users/${userId}`)
-}
+const getOne = userId => {
+  return createHttp.get(`${rootUrl}/users/${userId}`);
+};
 
 const users = {
-  getOne
-}
+  getOne,
+};
 
-export { users }
+export {users};

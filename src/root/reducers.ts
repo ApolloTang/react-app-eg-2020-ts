@@ -1,14 +1,11 @@
-import { combineReducers } from 'redux'
+import {combineReducers} from 'redux';
 
+import {resources} from 'app/resources/reducer';
+import {usersPage} from 'pages/users/containers/reducer';
 
-import { resources } from  'app/resources/reducer'
-import { usersPage } from  'pages/users/containers/reducer'
-
-
-const rootReducer:any = combineReducers({
+const rootReducer: any = combineReducers({
   resources,
-  usersPage
-})
+  usersPage,
+});
 
-
-export { rootReducer }
+export {rootReducer};

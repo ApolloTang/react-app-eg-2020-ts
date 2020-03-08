@@ -1,7 +1,7 @@
-import {users} from './users'
+import {users} from './users';
 
 const api = {
-  users
-}
+  users,
+};
 
-export default api
+export default api;

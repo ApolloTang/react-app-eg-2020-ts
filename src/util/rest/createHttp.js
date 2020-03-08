@@ -1,88 +1,74 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
 
-
-const get = (url, /* params = {} */ ) => {
+const get = (url /* params = {} */) => {
   const headers = {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  };
 
   const init = {
     method: 'GET',
     headers: headers,
     mode: 'cors',
-    cache: 'default'
-  }
+    cache: 'default',
+  };
 
-  return fetch(url, init).then(
-    response => {
-      if (!response.ok) {
-        throw Error(response.statusText)
-      }
-      return response.json()
+  return fetch(url, init).then(response => {
+    if (!response.ok) {
+      throw Error(response.statusText);
     }
-  )
-}
+    return response.json();
+  });
+};
 
-
-const post = (url, payload, /* opts */ ) => {
+const post = (url, payload /* opts */) => {
   const headers = {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  };
 
-  const requestBody = JSON.stringify(payload)
+  const requestBody = JSON.stringify(payload);
 
   const init = {
     method: 'POST',
     headers: headers,
     mode: 'cors',
     cache: 'default',
-    body: requestBody
-  }
+    body: requestBody,
+  };
 
-  return fetch(url, init).then(
-    response => response.json()
-  )
-}
+  return fetch(url, init).then(response => response.json());
+};
 
-
-const put = (url, payload, /* opts */ ) => {
+const put = (url, payload /* opts */) => {
   const headers = {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  };
 
-  const requestBody = JSON.stringify(payload)
+  const requestBody = JSON.stringify(payload);
 
   const init = {
     method: 'PUT',
     headers: headers,
     mode: 'cors',
     cache: 'default',
-    body: requestBody
-  }
+    body: requestBody,
+  };
 
-  return fetch(url, init).then(
-    response => response.json()
-  )
-}
+  return fetch(url, init).then(response => response.json());
+};
 
-
-const del = (url) => {
+const del = url => {
   const headers = {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  };
 
   const init = {
     method: 'DELETE',
     headers: headers,
     mode: 'cors',
     cache: 'default',
-  }
+  };
 
-  return fetch(url, init).then(
-    response => response.json()
-  )
-}
+  return fetch(url, init).then(response => response.json());
+};
 
-
-export default { get, post, put, del }
-
+export default {get, post, put, del};
