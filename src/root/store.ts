@@ -13,6 +13,8 @@ declare global {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+type T_appState = ReturnType<typeof rootReducer>;
+
 let store = createStore(rootReducer, applyMiddleware(...middleware));
 
 // Development
@@ -23,4 +25,4 @@ if (!PROD) {
   );
 }
 
-export {store};
+export {store, T_appState};
