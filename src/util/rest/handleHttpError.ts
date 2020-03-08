@@ -1,5 +1,5 @@
 // @TODO handle Error not yet impliment
-const handleError = () => fetchError => {
+const handleError = () => (/* fetchError */) => {
   // const error = {
   //   message: xhr.statusText,
   //   code: xhr.status,
