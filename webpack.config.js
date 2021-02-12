@@ -38,17 +38,16 @@ const webpackConfig_fn = (env = {}) => {
     devtool: 'source-map',
     context: absPathToSrc,
     entry: {
-      main: [
-        './main'
-      ]
+      main: ['./main'],
     },
     output: ifProduction(
       {
+        publicPath: '/',
         filename: '[name]-[chunkhash].js',
-        path: absPathToDist
+        path: absPathToDist,
       },
       {
-        publicPath: '/'
+        publicPath: '/',
       }
     ),
     resolve: {
@@ -60,12 +59,12 @@ const webpackConfig_fn = (env = {}) => {
         {
           test: /\.m?(j|t)sx?$/,
           use: 'babel-loader',
-          exclude: /node_modules/  // <---- very important
+          exclude: /node_modules/, // <---- very important
         },
         {
           test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
           loader: 'file-loader?name=./imgs/[name].[hash].[ext]',
-          exclude: absPathToFont
+          exclude: absPathToFont,
         },
         {
           test: /\.(woff|woff2|ttf|eot|svg|otf)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
